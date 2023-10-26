@@ -20,4 +20,4 @@ public class YamlJackson2HttpMesageConverter extends AbstractJackson2HttpMessage
 		
 	}
 
-}
+
