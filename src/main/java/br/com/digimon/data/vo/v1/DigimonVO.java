@@ -3,7 +3,10 @@ package br.com.digimon.data.vo.v1;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({"id","name","level"})
 public class DigimonVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -11,10 +14,11 @@ public class DigimonVO implements Serializable{
 	
 	private Long id;
 	
-
+	
+	@JsonProperty("name_digimon")
 	private String name;
 	
-
+	@JsonProperty("level_digimon")
 	private String level;
 	
 	
