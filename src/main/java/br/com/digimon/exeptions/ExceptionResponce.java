@@ -10,6 +10,13 @@ public class ExceptionResponce implements Serializable {
     private String message;
     private String details;
     
+    /**
+     * Construtor da classe ExceptionResponse.
+     * @param timestamp Timestamp que indica o momento em que a exceção ocorreu.
+     * @param message Mensagem de erro associada à exceção.
+     * @param details Detalhes adicionais sobre a exceção.
+     */
+    
     public ExceptionResponce(Date timestamp, String message, String details) {
         this.timestamp = timestamp;
         this.message = message;

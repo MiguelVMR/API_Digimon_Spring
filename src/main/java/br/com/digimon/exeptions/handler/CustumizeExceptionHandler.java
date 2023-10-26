@@ -18,10 +18,13 @@ public class CustumizeExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(Exception.class)
     public final  ResponseEntity <ExceptionResponce> handleAllExcepitons(
         Exception ex,WebRequest request) {
+		/* Cria uma instância de ExceptionResponse com o timestamp atual, 
+		mensagem de erro e detalhes da requisição*/
             ExceptionResponce exceptionResponce = new ExceptionResponce(
                 new Date(),
                  ex.getMessage(),
                  request.getDescription(false));
+         // Retorna uma resposta com o ExceptionResponse e status HTTP 500 (INTERNAL_SERVER_ERROR)
                  return new ResponseEntity<>(exceptionResponce,HttpStatus.INTERNAL_SERVER_ERROR);
                 
         
@@ -34,7 +37,7 @@ public class CustumizeExceptionHandler extends ResponseEntityExceptionHandler {
                 new Date(),
                  ex.getMessage(),
                  request.getDescription(false));
-                 
+         // Retorna uma resposta com o ExceptionResponse e status HTTP 404 (NOT_FOUND)
                  return new ResponseEntity<>(exceptionResponce,HttpStatus.NOT_FOUND);
         
     }

@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ResourceNotFoundException  extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	
+	 /**
+     * Construtor que recebe uma mensagem de erro e a repassa para o construtor da classe pai (RuntimeException).
+     * @param ex Mensagem de erro que descreve a exceção.
+     */
 	 public ResourceNotFoundException(String ex) {
 	        super(ex);
 	    }

@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.digimon.model.Digimon;
+import br.com.digimon.data.vo.v1.DigimonVO;
 import br.com.digimon.services.DigimonServices;
 
 @RestController
@@ -25,32 +24,38 @@ public class DigimonController {
 	@Autowired
 	private DigimonServices service;
 	
+	// Método para buscar todos os Digimons
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Digimon>findAll(){
+	public List<DigimonVO>findAll(){
 		return service.findAll();
 	}
 	
+	// Método para buscar um Digimon por ID
 	@GetMapping(value ="/{id}",
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Digimon findById(@PathVariable(value= "id")Long id){
+	public DigimonVO findById(@PathVariable(value= "id")Long id){
 		return service.findById(id);
 	}
 	
+	// Método para criar um novo Digimon
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Digimon create(@RequestBody Digimon digimon){
-		return service.create(digimon);
+	public DigimonVO create(@RequestBody DigimonVO DigimonVO){
+		return service.create(DigimonVO);
 	}
 	
+	// Método para atualizar um Digimon existente
 	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Digimon update(@RequestBody Digimon digimon){
-		return service.update(digimon);
+	public DigimonVO update(@RequestBody DigimonVO DigimonVO){
+		return service.update(DigimonVO);
 	}
 	
+	// Método para deletar um Digimon por ID
 	@DeleteMapping(value ="/{id}")
 	public ResponseEntity<?> delete(@PathVariable(value= "id")Long id){
 		 service.delete(id);
+		// Retorna uma resposta de sucesso sem conteúdo (No Content) após a exclusão bem-sucedida.
 		 return ResponseEntity.noContent().build();
 	}
 	
